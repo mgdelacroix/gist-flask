@@ -10,7 +10,7 @@
 	<h1>{{ username }}'s Gists</h1>
 
 	{% for gist in gists %}
-	<p><strong>{{ gist['description'] }}</strong></p>
+	<p><strong>{{ gist['description'] }}</strong> - <a href="https://gist.github.com/{{ gist['repo'] }}">view</a></p>
 	{% endfor %}
 
 	<p><a href="/">Back</a></p>
