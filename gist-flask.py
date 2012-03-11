@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 from flask import Flask, render_template, url_for, redirect, request
 app = Flask(__name__)
 
@@ -10,8 +11,12 @@ def hello():
 @app.route('/user/<username>/')
 # Show the gists for an user
 def showUserGists(username):
+	gists = []
 	r = requests.get('http://gist.github.com/api/v1/json/gists/%s' % username)
-	return "Request: %s" % r.text
+	decoded = json.loads(r.text)
+	for gist in decoded['gists']:
+		gists.append(gist)
+	return render_template('results.html', username=username, gists=gists)
 
 @app.route('/search', methods=['POST'])
 # Redirect to the correct URL

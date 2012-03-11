@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="es">
+
+<head>
+	<title>My GitHub Gists</title>
+</head>
+
+<body>
+
+	<h1>{{ username }}'s Gists</h1>
+
+	{% for gist in gists %}
+	<p><strong>{{ gist['description'] }}</strong></p>
+	{% endfor %}
+
+	<p><a href="/">Back</a></p>
+
+</body>
+
+</html>
